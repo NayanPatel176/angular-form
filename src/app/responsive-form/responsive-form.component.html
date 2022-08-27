@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+        <form [formGroup]="registrationForm" (ngSubmit)="submitRegistration($event)">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Full Name</span>
+                    <input type="text" formControlName="fullName" placeholder="Enter your name" required>
+                    <div *ngIf="submitted && f.fullName.errors">
+                        <div *ngIf="f.fullName.errors.required">Full Name is required</div>
+                        <div *ngIf="f.fullName.errors.minlength">Full Name minimum length is 3</div>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <span class="details">Username</span>
+                    <input type="text" formControlName="userName" placeholder="Enter your username" required>
+                    <div *ngIf="submitted && f.userName.errors">
+                        <div *ngIf="f.userName.errors.required">User Name is required</div>
+                        <div *ngIf="f.userName.errors.minlength">User Name minimum length is 3</div>
+                        <div *ngIf="f.userName.errors.maxlength">User Name maximum length is 10</div>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input type="text" formControlName="email" placeholder="Enter your email" required>
+                    <div *ngIf="submitted && f.email.errors">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email is invalid</div>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <span class="details">Phone Number</span>
+                    <input type="text" formControlName="phoneNumber" placeholder="Enter your number" required>
+                    <div *ngIf="submitted && f.phoneNumber.errors">
+                        <div *ngIf="f.phoneNumber.errors.required">Phone Number is required</div>
+                        <div *ngIf="f.phoneNumber.errors.minlength">Phone Number minimum length is 10</div>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="text" formControlName="passWord" placeholder="Enter your password" required>
+                    <div *ngIf="submitted && f.passWord.errors">
+                        <div *ngIf="f.passWord.errors.required">Password is required</div>
+                        <div *ngIf="f.passWord.errors.minlength">Password minimum length is 10</div>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <span class="details">Confirm Password</span>
+                    <input type="text" formControlName="confirmPassWord" placeholder="Confirm your password" required>
+                    <div *ngIf="submitted && f.confirmPassWord.errors">
+                        <div *ngIf="f.confirmPassWord.errors.required">Confirm PassWord is required</div>
+                        <div *ngIf="f.confirmPassWord.errors.minlength">Confirm PassWord minimum length is 10</div>
+                    </div>
+                </div>
+            </div>
+            <div class="gender-details">
+                <input type="radio" name="gender" formControlName="gender" value="male" id="dot-1">
+                <input type="radio" name="gender" formControlName="gender" value="female" id="dot-2">
+                <input type="radio" name="gender" formControlName="gender" value="other" id="dot-3">
+                <span class="gender-title">Gender</span>
+                <div class="category">
+                    <label for="dot-1">
+                        <span class="dot one"></span>
+                        <span class="gender">Male</span>
+                    </label>
+                    <label for="dot-2">
+                        <span class="dot two"></span>
+                        <span class="gender">Female</span>
+                    </label>
+                    <label for="dot-3">
+                        <span class="dot three"></span>
+                        <span class="gender">Prefer not to say</span>
+                    </label>
+                </div>
+            </div>
+            <div class="" formArrayName="hobbies">
+                <h4>Your Hobbies</h4>
+                <button class="btn btn-light" type="button" (click)="onAddHobby()">Add Hobby</button>
+                <div class="form-group input-box position-relative"
+                    *ngFor="let hobbyControl of Hobbies.controls; let i = index">
+                    <input type="text" class="form-control" [formControlName]="i">
+                    <button class="btn btn-dark deleteHobby" style="margin: 0; padding: 1px" type="button"
+                        (click)="deleteHobby(i)">delete</button>
+                </div>
+            </div>
+            <div *ngFor="let city of cities; let i = index" formArrayName="cities">
+                <input type="checkbox" [formControlName]="i">
+                <span>{{city}}</span>
+            </div>
+
+            <div *ngFor="let zipCode of zip_codes; let i = index" formArrayName="zip_codes">
+                <input type="checkbox" [formControlName]="i">
+                <span>{{zipCode}}</span>
+            </div>
+
+            <div class="button">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+</div>
