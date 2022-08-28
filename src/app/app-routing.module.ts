@@ -4,6 +4,7 @@ import { FormComponent } from './form/form.component';
 import { ResponsiveFormComponent } from './responsive-form/responsive-form.component';
 
 const routes: Routes = [
+  {path: "", component: ResponsiveFormComponent},
   {path: "form", component: FormComponent},
   {path: "responsive-form", component: ResponsiveFormComponent}
 ];

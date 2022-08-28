@@ -136,9 +136,15 @@ form .button input:hover {
 }
 .deleteHobby {
   position: absolute;
-  right: 0;
-  top: 0;
-  transform: translate(-50%, 50%);
+  top: 28%;
+  right: -20%;
+  /* right: 0; */
+  /* top: 50%; */
+  /* transform: translate(-50%, 50%); */
+}
+.checkBoxContainer {
+  display: flex;
+  justify-content: space-between;
 }
 .btn {
   border-radius: 5px;

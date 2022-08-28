@@ -7,49 +7,57 @@
                     <span class="details">Full Name</span>
                     <input type="text" formControlName="fullName" placeholder="Enter your name" required>
                     <div *ngIf="submitted && f.fullName.errors">
-                        <div *ngIf="f.fullName.errors.required">Full Name is required</div>
-                        <div *ngIf="f.fullName.errors.minlength">Full Name minimum length is 3</div>
+                        <div class="" style="color: red;" *ngIf="f.fullName.errors.required">Full Name is required</div>
+                        <div class="" style="color: red;" *ngIf="f.fullName.errors.minlength">Full Name minimum length
+                            is 3</div>
                     </div>
                 </div>
                 <div class="input-box">
                     <span class="details">Username</span>
                     <input type="text" formControlName="userName" placeholder="Enter your username" required>
                     <div *ngIf="submitted && f.userName.errors">
-                        <div *ngIf="f.userName.errors.required">User Name is required</div>
-                        <div *ngIf="f.userName.errors.minlength">User Name minimum length is 3</div>
-                        <div *ngIf="f.userName.errors.maxlength">User Name maximum length is 10</div>
+                        <div class="" style="color: red;" *ngIf="f.userName.errors.required">User Name is required</div>
+                        <div class="" style="color: red;" *ngIf="f.userName.errors.minlength">User Name minimum length
+                            is 3</div>
+                        <div class="" style="color: red;" *ngIf="f.userName.errors.maxlength">User Name maximum length
+                            is 10</div>
                     </div>
                 </div>
                 <div class="input-box">
                     <span class="details">Email</span>
                     <input type="text" formControlName="email" placeholder="Enter your email" required>
                     <div *ngIf="submitted && f.email.errors">
-                        <div *ngIf="f.email.errors.required">Email is required</div>
-                        <div *ngIf="f.email.errors.email">Email is invalid</div>
+                        <div class="" style="color: red;" *ngIf="f.email.errors.required">Email is required</div>
+                        <div class="" style="color: red;" *ngIf="f.email.errors.email">Email is invalid</div>
                     </div>
                 </div>
                 <div class="input-box">
                     <span class="details">Phone Number</span>
                     <input type="text" formControlName="phoneNumber" placeholder="Enter your number" required>
                     <div *ngIf="submitted && f.phoneNumber.errors">
-                        <div *ngIf="f.phoneNumber.errors.required">Phone Number is required</div>
-                        <div *ngIf="f.phoneNumber.errors.minlength">Phone Number minimum length is 10</div>
+                        <div class="" style="color: red;" *ngIf="f.phoneNumber.errors.required">Phone Number is required
+                        </div>
+                        <div class="" style="color: red;" *ngIf="f.phoneNumber.errors.minlength">Phone Number minimum
+                            length is 10</div>
                     </div>
                 </div>
                 <div class="input-box">
                     <span class="details">Password</span>
                     <input type="text" formControlName="passWord" placeholder="Enter your password" required>
                     <div *ngIf="submitted && f.passWord.errors">
-                        <div *ngIf="f.passWord.errors.required">Password is required</div>
-                        <div *ngIf="f.passWord.errors.minlength">Password minimum length is 10</div>
+                        <div class="" style="color: red;" *ngIf="f.passWord.errors.required">Password is required</div>
+                        <div class="" style="color: red;" *ngIf="f.passWord.errors.minlength">Password minimum length is
+                            6</div>
                     </div>
                 </div>
                 <div class="input-box">
                     <span class="details">Confirm Password</span>
                     <input type="text" formControlName="confirmPassWord" placeholder="Confirm your password" required>
                     <div *ngIf="submitted && f.confirmPassWord.errors">
-                        <div *ngIf="f.confirmPassWord.errors.required">Confirm PassWord is required</div>
-                        <div *ngIf="f.confirmPassWord.errors.minlength">Confirm PassWord minimum length is 10</div>
+                        <div class="" style="color: red;" *ngIf="f.confirmPassWord.errors.required">Confirm PassWord is
+                            required</div>
+                        <div class="" style="color: red;" *ngIf="f.confirmPassWord.errors.minlength">Confirm PassWord
+                            minimum length is 6</div>
                     </div>
                 </div>
             </div>
@@ -72,6 +80,9 @@
                         <span class="gender">Prefer not to say</span>
                     </label>
                 </div>
+                <div *ngIf="submitted && f.gender.errors">
+                    <div class="" style="color: red;" *ngIf="f.gender.errors.required">Gender field is required</div>
+                </div>
             </div>
             <div class="" formArrayName="hobbies">
                 <h4>Your Hobbies</h4>
@@ -79,18 +90,42 @@
                 <div class="form-group input-box position-relative"
                     *ngFor="let hobbyControl of Hobbies.controls; let i = index">
                     <input type="text" class="form-control" [formControlName]="i">
-                    <button class="btn btn-dark deleteHobby" style="margin: 0; padding: 1px" type="button"
+                    <button class="btn btn-dark deleteHobby" style="margin: -5px; padding: 5px" type="button"
                         (click)="deleteHobby(i)">delete</button>
                 </div>
+                <div *ngIf="submitted && f.hobbies.errors">
+                    <div class="" style="color: red;" *ngIf="f.hobbies.errors.required">Hobbies is required</div>
+                </div>
             </div>
-            <div *ngFor="let city of cities; let i = index" formArrayName="cities">
-                <input type="checkbox" [formControlName]="i">
-                <span>{{city}}</span>
+            <div class="row">
+                <span class="details col-6 mt-2">City</span>
+                <div class="col-6 mt-2">
+                    <div class="checkBox" *ngFor="let city of cities; let i = index" formArrayName="cities">
+                        <input type="checkbox" [formControlName]="i">
+                        <span>{{city}}</span>
+                    </div>
+                    <div *ngIf="submitted && f.cities.errors">
+                        <div class="" style="color: red;" *ngIf="f.cities.errors.required">Hobbies is required</div>
+                    </div>
+                </div>
+                <span class="details col-6 mt-2">Zip Code</span>
+                <div class="col-6 mt-2">
+                    <div class="checkBox" *ngFor="let zipCode of zip_codes; let i = index" formArrayName="zip_codes">
+                        <input type="checkbox" [formControlName]="i">
+                        <span>{{zipCode}}</span>
+                    </div>
+                    <div *ngIf="submitted && f.zip_codes.errors">
+                        <div class="" style="color: red;" *ngIf="f.zip_codes.errors.required">Hobbies is required</div>
+                    </div>
+                </div>
             </div>
-
-            <div *ngFor="let zipCode of zip_codes; let i = index" formArrayName="zip_codes">
-                <input type="checkbox" [formControlName]="i">
-                <span>{{zipCode}}</span>
+            <div class="mb-3 mt-2">
+                <label for="formFile" class="form-label">Upload Your Profile Picture</label>
+                <input class="form-control" type="file" (change)="onFileChange($event)" id="formFile">
+                <img *ngIf="url" [src]="url" height="100" width="auto" alt="Image Upload" srcset="">
+                <div *ngIf="submitted && f.file.errors">
+                    <div style="color: red;" *ngIf="f.file.errors.required">Image is required</div>
+                </div>
             </div>
 
             <div class="button">
